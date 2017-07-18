@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+</head>
+<body ng-app="app">
+
+    <div ng-controller="contr">
+        <p>数据双向绑定</p>
+        <input type="text" ng-model="str" value=""/>
+        <input type="text" ng-model="str" value=""/>
+        <input type="text" ng-model="mod.name" value=""/>
+        <input type="text" ng-model="mod.age" value=""/>
+    </div>
+
+<script type="text/javascript">
+    var app = angular.module('app', []);
+    app.controller('contr', function($scope) {
+        $scope.str = 'ABC';
+        $scope.mod = {'name':'张三', 'age':'18'};
+    });
+
+
+
+
+    $.ajax({
+        type: "POST",
+        url: "http://10.0.254.28:8280/api/v1/minitor/query",
+        contentType: "application/json", //必须有
+        dataType: "json", //表示返回值类型，不必须
+        data: JSON.stringify({ 'minitorType': '扬尘'}),
+        success: function (jsonResult) {
+            console.log(jsonResult);
+        }
+    });
+
+</script>
+
+</body>
+</html>

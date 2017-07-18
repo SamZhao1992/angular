@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+    <!--声明一个模板-->
+    <script type="text/ng-template" id="base">
+        <div>姓名:{{name}}</div>
+        <div>年龄:{{age}}</div>
+    </script>
+</head>
+<body>
+
+<div>
+    <!--调用模板-->
+    <div ng-controller="cont" ng-include src="'base'">
+
+    </div>
+    <!--调用模板-->
+    <div ng-controller="cont1" ng-include src="'base'">
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    var app = angular.module("app", []);
+    app.controller("cont", function ($scope, $window) {
+        $scope.name = "samzhao";
+        $scope.age = 18;
+    });
+    app.controller("cont1", function ($scope, $window) {
+        $scope.name = "lisi";
+        $scope.age = 28;
+    });
+</script>
+
+</body>
+</html>

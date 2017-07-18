@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+</head>
+<body ng-app="app">
+
+    <div ng-controller="contr">
+        <p>字符过滤</p>
+        <p>{{value | number:1}}</p>
+        <p>{{value | number:0}}</p>
+        <p>{{value | currency:'￥'}}</p>
+        <p>{{str | lowercase}}</p>
+        <p>{{str1 | uppercase}}</p>
+    </div>
+
+<script type="text/javascript">
+    var app = angular.module('app', []);
+    app.controller('contr', function($scope) {
+        $scope.value = 222.58;
+        $scope.str = 'ABC';
+        $scope.str1 = 'abc';
+    });
+</script>
+
+</body>
+</html>

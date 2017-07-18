@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+</head>
+<body ng-app="app">
+
+    <div ng-controller="cont">
+        <span>{{span_show()}}</span>
+    </div>
+
+    <script type="text/javascript">
+        var app = angular.module("app", []);
+        app.controller("cont", function ($scope) {
+            $scope.str = "show span!";
+            $scope.span_show = function () {
+                $scope.str = "show span!---aaaaccccbbbbb";
+                return $scope.str;
+            }
+        });
+    </script>
+
+</body>
+</html>

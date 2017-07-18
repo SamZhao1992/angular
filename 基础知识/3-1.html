@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+    <style type="text/css">
+        .odd{
+            color: red;
+        }
+        .even{
+            color: blue;
+        }
+    </style>
+</head>
+<body ng-app="app">
+
+    <div ng-controller="contr">
+        <ul>
+            <li ng-repeat="da in data | orderBy:'-age' | limitTo:2" ng-class-odd="'odd'" ng-class-even="'even'">
+                <span>{{$index+1}}</span>
+                <span>{{da.name}}</span>
+                <span>{{da.age}}</span>
+            </li>
+        </ul>
+    </div>
+
+<script type="text/javascript">
+    var app = angular.module('app', []);
+    app.controller('contr', function($scope) {
+        $scope.data = [
+            {'name':'zxc1', 'age':19},
+            {'name':'zxc2', 'age':18},
+            {'name':'zxc3', 'age':20},
+            {'name':'zxc4', 'age':17}
+        ];
+    });
+</script>
+
+</body>
+</html>

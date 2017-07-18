@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+    <style type="text/css">
+        .odd{
+            color: red;
+        }
+        .even{
+            color: blue;
+        }
+        span{
+            width: 150px;
+        }
+    </style>
+</head>
+<body ng-app="app">
+    <div ng-controller="contr">
+        <input type="text" ng-model="key" placeholder="请输入要查找的姓名"/>
+        <ul>
+            <li>
+                <span>序号</span>
+                <span ng-click="title='name';desc=!desc;">姓名</span>
+                <span ng-click="title='age';desc=!desc;">年龄</span>
+                <span ng-click="title='sex';desc=!desc;">性别</span>
+            </li>
+            <li ng-repeat="da in data | filter:{name:key} | orderBy: title:desc  " ng-class-odd="'odd'" ng-class-even="'even'">
+                <span>{{$index+1}}</span>
+                <span>{{da.name}}</span>
+                <span>{{da.age}}</span>
+                <span>{{da.sex}}</span>
+            </li>
+        </ul>
+    </div>
+
+<script type="text/javascript">
+    var app = angular.module('app', []);
+    app.controller('contr', function($scope) {
+        $scope.data = [
+            {'name':'zxc1', 'age':19, 'sex':'男'},
+            {'name':'zxc2', 'age':18, 'sex':'女'},
+            {'name':'zxc3', 'age':20, 'sex':'女'},
+            {'name':'zxc4', 'age':17, 'sex':'男'}
+        ];
+        $scope.findAge = function (e) {//e 为当前遍历的数据源对象
+           return e.age > 17 && e.age < 20;
+        };
+        $scope.title = 'name';
+        $scope.desc = 0;
+        $scope.key = '';
+    });
+</script>
+
+</body>
+</html>
